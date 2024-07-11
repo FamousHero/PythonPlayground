@@ -1,0 +1,15 @@
+
+
+A coroutine can suspend execution and resume at a later point - https://docs.python.org/3/glossary.html#term-coroutine
+async/await uses this to its benefit
+
+In order to run an async method, it must be done with the await keyword or by creating a task
+Await simply halts execution of the current function until the coroutine finishes. This means if this is the highest level async function we will be blocked
+Tasks schedule a coroutine to run. By scheduling it, this function can continue to complete instructions or even other tasks until it needs the return value. When return value is needed, simple await the task => think of await as a blocker/suspender
+Instead of calling await explicitly for tasks, create a context manager with TaskGroup(). This stores the context needed for the coroutines to resume execution when needed. Await is implicitly called for all tasks within the TaskGroup() once the context manager exits. This means if there are any instructions you'd like to be executed concurrently and dont rely on the results of a task, include within the context manager.
+
+#TODO: play with futures. From reading and available context, it is similar to JS promises and the .then() function. It is the eventual result of the asyncronous function. this can be used as an arguement to a callback
+
+asyncio.gather() is similar to TaskGroup(). it takes any number of awaitable objects and calls create_task() for each of them. this function This means that wether the awaitable is a coroutine, task, or future, it will get run asyncronously by default. asyncio.gather() returns an array of the results for easy storage. This cuts down on verbosity in many areas (no await statement, no explicit context manager, no variables to hold reselt, no call to create_task()
+
+
