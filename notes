@@ -1,0 +1,11 @@
+- NamedTuples are great for storing closely related data. They are
+    classes under the hood but can be thought of as Structs in C++
+    in terms of use case.
+    https://docs.python.org/3/library/collections.html#collections.namedtuple
+
+- map(func, iterable) similar to js Array.map(func). Based on
+    functional programming, the map() function will transform 
+    each element using the func provided & return a map object
+    which itself is an iterator. 
+    https://docs.python.org/3/library/functions.html#map
+    https://realpython.com/python-map-function/
