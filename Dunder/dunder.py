@@ -5,9 +5,28 @@ class Vector:
         self.x = x
         self.y = y
     
+    '''
+    Actually SUPER BAD!!!!
+    This method is used by the interpreter and std lib functions
+    THESE FUNCTIONS EXPECT A CONTAINER AND USE LEN FOR IT'S SIZE
+    Only use it for a container class
+    Fluent Python: Clear, Concise, and Effective Programming - Ch 1
     def __len__(self):
         return int(math.sqrt(self.x**2 + self.y**2)) # len must be of type int
-    
+    '''
+
+    '''
+    Also used by container classes, using this along with len
+    give access to a host of build int functions & std lib functions
+    eg. random.choice(class_instance), sorted(class_instance, sort_func), reversed(class_instance, sort_func)
+    when sort_function is omitted, each element is compared directly (using __lt__) 
+    https://docs.python.org/3/library/functions.html#sorted
+    https://stackoverflow.com/questions/2936863/implementing-slicing-in-getitem ->
+    https://docs.python.org/3/c-api/slice.html -> 
+    https://docs.python.org/3/library/functions.html#slice
+    def __getitem__(self, index):
+        pass
+    '''
     def __str__(self):
         return f"Vector: {{{self.x}, {self.y}}}"
 
